@@ -99,12 +99,6 @@ public class BallControl : MonoBehaviour {
             GetComponent<Transform>().position = lastPos;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
-
-        if (GetComponent<Rigidbody>().velocity.magnitude < 0.4)
-        {
-            Debug.Log("asss");
-        }
-        else Debug.Log("notass");
     }
 
     void LateUpdate()
