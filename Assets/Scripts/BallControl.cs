@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallControl : MonoBehaviour {
 
     public GameObject cam, pivot, plane;
-    float angle, drawLength, speedMultiplier = 12F;
+    float angle, drawLength, speedMultiplier = 20F;
     Vector3 startPos, endPos, direction, force, lastPos;
     bool shot = false, mouseHeld = false;
     Quaternion rotation;
@@ -18,12 +18,7 @@ public class BallControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GetComponent<Rigidbody>().velocity.z == 0 && shot == true)
-        {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GetComponent<Transform>().rotation = Quaternion.identity;
-            shot = false;
-        }
+
 
         if (Input.GetMouseButtonDown(0) && GetComponent<Rigidbody>().velocity == Vector3.zero)
         {
@@ -100,16 +95,19 @@ public class BallControl : MonoBehaviour {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 
-        if (GetComponent<Rigidbody>().velocity.magnitude < 0.4)
-        {
-            Debug.Log("asss");
-        }
-        else Debug.Log("notass");
+
     }
 
     void LateUpdate()
     {
         cam.transform.position = new Vector3(0, 12, GetComponent<Transform>().position.z + (float)cam.GetComponent<Camera>().pixelWidth / 350);
         if (cam.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0, 0, cam.GetComponent<Camera>().nearClipPlane)).z >= 40) cam.transform.position = new Vector3(0, 12, 40.2F);
+
+        if (GetComponent<Rigidbody>().velocity.z == 0)
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<Transform>().rotation = Quaternion.identity;
+            shot = false;
+        }
     }
 }
