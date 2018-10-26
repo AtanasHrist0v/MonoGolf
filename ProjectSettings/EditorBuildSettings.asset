@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arcade1Scene.unity
     guid: cfe933c8cecf5d748a9893f40ec7fa9c
-  - enabled: 0
-    path: Assets/Scenes/ArcadeScene.unity
-    guid: 140d66bea698b2144acc87c812907720
   - enabled: 1
     path: Assets/Scenes/ChallengesScene.unity
     guid: bc7a6f15d51ac82429e235a12b8f525d
