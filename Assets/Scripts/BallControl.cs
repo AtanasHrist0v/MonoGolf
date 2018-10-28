@@ -28,8 +28,7 @@ public class BallControl : MonoBehaviour {
             plane.GetComponent<MeshRenderer>().enabled = true;
             
         }
-
-        if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero)
+        if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && Input.mousePosition.y < Screen.height - Screen.height / 6)
         {
             plane.GetComponent<MeshRenderer>().enabled = true;
             endPos = Input.mousePosition;
@@ -81,7 +80,7 @@ public class BallControl : MonoBehaviour {
             mouseHeld = true;
             if (endPos.x >= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x - 50 && endPos.x <= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x + 50 && endPos.y >= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y - 50 && endPos.y <= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y + 50) plane.GetComponent<MeshRenderer>().enabled = false;
         }
-        if (mouseHeld && Input.GetMouseButton(0) == false)
+        if (mouseHeld && Input.GetMouseButton(0) == false && Input.mousePosition.y < Screen.height - Screen.height / 6)
         {
             if (!(endPos.x >= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x - 50 && endPos.x <= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x + 50 && endPos.y >= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y - 50 && endPos.y <= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y + 50)) {
                 GetComponent<Rigidbody>().AddRelativeForce(force);
@@ -89,7 +88,6 @@ public class BallControl : MonoBehaviour {
                 shot = true;
                 levelBuilder.shotsLeft--;
             }
-            plane.GetComponent<MeshRenderer>().enabled = false;
             plane.GetComponent<MeshRenderer>().enabled = false;
             mouseHeld = false;
         }
@@ -102,6 +100,9 @@ public class BallControl : MonoBehaviour {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 
+        if (Input.mousePosition.y > Screen.height - Screen.height / 6) {
+            plane.GetComponent<MeshRenderer>().enabled = false;
+        }
         counter.text = "Shots left: " + levelBuilder.shotsLeft;
     }
 
