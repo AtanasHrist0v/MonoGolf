@@ -29,7 +29,7 @@ public class BallControl : MonoBehaviour {
             plane.GetComponent<MeshRenderer>().enabled = true;
             
         }
-        if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && Input.mousePosition.y < Screen.height - Screen.height / 6)
+        if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && Input.mousePosition.y < Screen.height - Screen.height / 6 && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) > 0)
         {
             startPos = new Vector3(cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x, cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y, 0);
             plane.GetComponent<MeshRenderer>().enabled = true;
@@ -82,7 +82,7 @@ public class BallControl : MonoBehaviour {
             mouseHeld = true;
             if (endPos.x >= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x - 50 && endPos.x <= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x + 50 && endPos.y >= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y - 50 && endPos.y <= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y + 50) plane.GetComponent<MeshRenderer>().enabled = false;
         }
-        if (mouseHeld && Input.GetMouseButton(0) == false && Input.mousePosition.y < Screen.height - Screen.height / 6)
+        if (mouseHeld && Input.GetMouseButton(0) == false && Input.mousePosition.y < Screen.height - Screen.height / 6 && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) > 0)
         {
             if (!(endPos.x >= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x - 50 && endPos.x <= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x + 50 && endPos.y >= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y - 50 && endPos.y <= cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y + 50)) {
                 GetComponent<Rigidbody>().AddRelativeForce(force);
