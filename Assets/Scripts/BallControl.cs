@@ -24,12 +24,14 @@ public class BallControl : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0) && GetComponent<Rigidbody>().velocity == Vector3.zero)
         {
+ 
             startPos = new Vector3(cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x, cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y, 0);
             plane.GetComponent<MeshRenderer>().enabled = true;
             
         }
         if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && Input.mousePosition.y < Screen.height - Screen.height / 6)
         {
+            startPos = new Vector3(cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x, cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y, 0);
             plane.GetComponent<MeshRenderer>().enabled = true;
             endPos = Input.mousePosition;
             drawLength = (Mathf.Sqrt(Mathf.Pow((startPos.x - endPos.x), 2) + Mathf.Pow((startPos.y - endPos.y), 2))) % 400;
@@ -120,10 +122,11 @@ public class BallControl : MonoBehaviour {
             shot = false;
         }
 
-        if (GetComponent<Transform>().position.y > 4.5)
+        if (GetComponent<Transform>().position.y > 4.5 && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) > 0)
         {
-            Physics.sleepThreshold = 1;
+            Physics.sleepThreshold = 0;
         }
         else Physics.sleepThreshold = 100;
+
     }
 }
