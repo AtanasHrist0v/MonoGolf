@@ -6,7 +6,7 @@ public class BallControl : MonoBehaviour {
     public GameObject cam, pivot, plane;
     public Text counter;
     public LevelBuilder levelBuilder;
-    float angle, drawLength, speedMultiplier = 20F;
+    float angle, drawLength, speedMultiplier = 30F;
     Vector3 startPos, endPos, direction, force, lastPos;
     bool shot = false, mouseHeld = false;
     Quaternion rotation;
@@ -104,6 +104,8 @@ public class BallControl : MonoBehaviour {
             plane.GetComponent<MeshRenderer>().enabled = false;
         }
         counter.text = "Shots left: " + levelBuilder.shotsLeft;
+
+        Debug.Log(GetComponent<Rigidbody>().velocity);
     }
 
     void LateUpdate()
