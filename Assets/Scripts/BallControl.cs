@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BallControl : MonoBehaviour {
 
@@ -129,4 +130,14 @@ public class BallControl : MonoBehaviour {
         else Physics.sleepThreshold = 100;
 
     }
+
+	void OnCollisionEnter(Collision col)
+	{
+		Debug.Log("Collision Exists");
+		if(col.gameObject.name == "Trigger") 
+		{
+			Debug.Log("Collision Detected");
+			SceneManager.LoadScene (1);
+		}
+	}
 }
