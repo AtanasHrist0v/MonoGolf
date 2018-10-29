@@ -119,5 +119,11 @@ public class BallControl : MonoBehaviour {
             GetComponent<Transform>().rotation = Quaternion.identity;
             shot = false;
         }
+
+        if (GetComponent<Transform>().position.y > 4.5)
+        {
+            Physics.sleepThreshold = 1;
+        }
+        else Physics.sleepThreshold = 100;
     }
 }
