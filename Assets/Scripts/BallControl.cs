@@ -108,7 +108,7 @@ public class BallControl : MonoBehaviour {
         }
         counter.text = "Shots left: " + levelBuilder.shotsLeft;
 
-        Debug.Log(GetComponent<Rigidbody>().velocity);
+        //Debug.Log(GetComponent<Rigidbody>().velocity);
     }
 
     void LateUpdate()
