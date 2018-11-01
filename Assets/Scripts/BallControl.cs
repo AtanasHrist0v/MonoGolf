@@ -114,7 +114,6 @@ public class BallControl : MonoBehaviour {
     void LateUpdate()
     {
         cam.transform.position = new Vector3(GetComponent<Transform>().position.x, 12, GetComponent<Transform>().position.z + (float)cam.GetComponent<Camera>().pixelWidth / 350);
-        if (cam.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0, 0, cam.GetComponent<Camera>().nearClipPlane)).z >= 40) cam.transform.position = new Vector3(0, 12, 40.2F);
 
         if (GetComponent<Rigidbody>().velocity.z == 0)
         {
