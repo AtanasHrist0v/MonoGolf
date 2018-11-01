@@ -133,10 +133,8 @@ public class BallControl : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		Debug.Log("Collision Exists");
 		if(col.gameObject.name == "Trigger") 
 		{
-			Debug.Log("Collision Detected");
 			SceneManager.LoadScene (1);
 		}
 	}
