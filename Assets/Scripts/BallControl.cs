@@ -112,12 +112,11 @@ public class BallControl : MonoBehaviour {
         {
             GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -500f));
         }
-        Debug.Log(GetComponent<Rigidbody>().velocity);
     }
 
     void LateUpdate()
     {
-        cam.transform.position = new Vector3(GetComponent<Transform>().position.x, 12, GetComponent<Transform>().position.z + (float)cam.GetComponent<Camera>().pixelWidth / 350);
+        cam.transform.position = new Vector3(GetComponent<Transform>().position.x, 12, (GetComponent<Transform>().position.z + (float)cam.GetComponent<Camera>().pixelWidth / 350 ) - 12);
 
         if (GetComponent<Rigidbody>().velocity.z == 0)
         {
