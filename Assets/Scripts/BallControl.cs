@@ -30,7 +30,7 @@ public class BallControl : MonoBehaviour {
             plane.GetComponent<MeshRenderer>().enabled = true;
             
         }
-        if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && Input.mousePosition.y < Screen.height - Screen.height / 6 && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) > 0)
+        if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && Input.mousePosition.y < Screen.height - Screen.height / 6)
         {
             startPos = new Vector3(cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x, cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y, 0);
             plane.GetComponent<MeshRenderer>().enabled = true;
@@ -108,7 +108,11 @@ public class BallControl : MonoBehaviour {
         }
         counter.text = "Shots left: " + levelBuilder.shotsLeft;
 
-        //Debug.Log(GetComponent<Rigidbody>().velocity);
+        if (GetComponent<Transform>().position.y > 0.46 && GetComponent<Transform>().position.y < 1.75 && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) <= 0.2)
+        {
+            GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -500f));
+        }
+        Debug.Log(GetComponent<Rigidbody>().velocity);
     }
 
     void LateUpdate()

@@ -408,7 +408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09917234, y: 0.9675251}
   m_AnchorMax: {x: 0.40413836, y: 0.98084956}
-  m_AnchoredPosition: {x: -1.5259094, y: -24.543228}
+  m_AnchoredPosition: {x: -1.5259018, y: -24.543213}
   m_SizeDelta: {x: -60.99748, y: 20.079197}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &287724948
@@ -633,6 +633,11 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: 50beb628ed8f4ce4295d4eb69ea20e96,
         type: 2}
+    - target: {fileID: 23301833063229372, guid: da5b549d11005784b89f66d49a3bb83e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d16db2dc740b1dc46ae75eeb7d470ace, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da5b549d11005784b89f66d49a3bb83e, type: 2}
   m_IsPrefabParent: 0
@@ -844,7 +849,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!135 &1299654035
 SphereCollider:
   m_ObjectHideFlags: 0
