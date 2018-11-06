@@ -17,6 +17,7 @@ public class BallControl : MonoBehaviour {
         Input.simulateMouseWithTouches = true;
         plane.GetComponent<MeshRenderer>().enabled = false;
         cam.GetComponent<Camera>().fieldOfView = 55 / ((float)cam.GetComponent<Camera>().pixelWidth / cam.GetComponent<Camera>().pixelHeight);
+        Application.targetFrameRate = 60;
     }
 	
 	// Update is called once per frame
