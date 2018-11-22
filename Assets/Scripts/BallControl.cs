@@ -113,9 +113,6 @@ public class BallControl : MonoBehaviour {
         {
             GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -500f));
         }
-
-        // if (Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) > 0) plane.GetComponent<MeshRenderer>().enabled = false;
-       // Debug.Log(GetComponent<Rigidbody>().velocity);
     }
 
     void LateUpdate()
@@ -132,7 +129,6 @@ public class BallControl : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-        Debug.Log(col.gameObject.name);
         if (col.gameObject.name == "Trigger")
         {
             SceneManager.LoadScene(1);
