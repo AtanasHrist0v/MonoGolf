@@ -9,7 +9,7 @@ public class BallControl : MonoBehaviour {
     public LevelBuilder levelBuilder;
     float angle, drawLength, speedMultiplier = 30F;
     Vector3 startPos, endPos, direction, force, lastPos;
-    bool shot = false, mouseHeld = false;
+    bool shot = false, mouseHeld = false, onRamp;
     Quaternion rotation;
     
     // Use this for initialization
@@ -24,14 +24,14 @@ public class BallControl : MonoBehaviour {
 	void Update () {
 
 
-        if (Input.GetMouseButtonDown(0) && GetComponent<Rigidbody>().velocity == Vector3.zero)
+        if (Input.GetMouseButtonDown(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && onRamp == false)
         {
  
             startPos = new Vector3(cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x, cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y, 0);
             plane.GetComponent<MeshRenderer>().enabled = true;
             
         }
-        if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && Input.mousePosition.y < Screen.height - Screen.height / 6)
+        if (Input.GetMouseButton(0) && GetComponent<Rigidbody>().velocity == Vector3.zero && Input.mousePosition.y < Screen.height - Screen.height / 6 && onRamp == false)
         {
             startPos = new Vector3(cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).x, cam.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position).y, 0);
             plane.GetComponent<MeshRenderer>().enabled = true;
@@ -109,10 +109,13 @@ public class BallControl : MonoBehaviour {
         }
         counter.text = "Shots left: " + levelBuilder.shotsLeft;
 
-        if (GetComponent<Transform>().position.y > 0.46 && GetComponent<Transform>().position.y < 1.75 && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) <= 0.2)
+        if (onRamp == true && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) <= 0.2)
         {
             GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -500f));
         }
+
+        // if (Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) > 0) plane.GetComponent<MeshRenderer>().enabled = false;
+       // Debug.Log(GetComponent<Rigidbody>().velocity);
     }
 
     void LateUpdate()
@@ -125,20 +128,22 @@ public class BallControl : MonoBehaviour {
             GetComponent<Transform>().rotation = Quaternion.identity;
             shot = false;
         }
-
-        if (GetComponent<Transform>().position.y > 4.5 && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) > 0)
-        {
-            Physics.sleepThreshold = 0;
-        }
-        else Physics.sleepThreshold = 100;
-
     }
 
 	void OnCollisionEnter(Collision col)
 	{
-		if(col.gameObject.name == "Trigger") 
-		{
-			SceneManager.LoadScene (1);
-		}
-	}
+        Debug.Log(col.gameObject.name);
+        if (col.gameObject.name == "Trigger")
+        {
+            SceneManager.LoadScene(1);
+        }
+        else if (col.gameObject.name == "Ramp" || col.gameObject.name == "SideWalls(Ramp)" || col.gameObject.name == "SideWalls(Ramp) (1)")
+        {
+            onRamp = true;
+        }
+        else
+        {
+            onRamp = false;
+        }
+    }
 }
