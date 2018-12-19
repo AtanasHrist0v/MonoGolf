@@ -9,7 +9,7 @@ public class BallControl : MonoBehaviour {
     public LevelBuilder levelBuilder;
     float angle, drawLength, speedMultiplier = 30F;
     Vector3 startPos, endPos, direction, force, lastPos;
-    bool shot = false, mouseHeld = false, onRamp;
+    bool shot = false, mouseHeld = false, onRamp, reset;
     Quaternion rotation;
     
     // Use this for initialization
@@ -98,21 +98,25 @@ public class BallControl : MonoBehaviour {
 
         if (GetComponent<Transform>().position.y < -1F)
         {
+            reset = true;
             GetComponent<Transform>().position = lastPos;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Transform>().position = lastPos;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+        else reset = false;
 
         if (Input.mousePosition.y > Screen.height - Screen.height / 6) {
             plane.GetComponent<MeshRenderer>().enabled = false;
         }
         counter.text = "Shots left: " + levelBuilder.shotsLeft;
 
-        if (onRamp == true && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) <= 0.2)
+        if (onRamp == true && Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z) <= 0.2 && reset != true)
         {
+
             GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -500f));
         }
+
     }
 
     void LateUpdate()
