@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: d560e8a2d4e04bb42a7c0e51d42aa54b
+guid: 32eea50c82118194fb95322a08e45ad3
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 400
+  fontSize: 200
   forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Arial
+  fontName: Fredoka One
   fontNames:
-  - Arial
+  - Fredoka One
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
