@@ -5,33 +5,43 @@ using UnityEngine.UI;
 
 public class MenuColorChange : MonoBehaviour 
 {
+	public Camera cam;
 
 	void Start () 
 	{
 		int i = Random.Range (1, 7);
-		Debug.Log = "";
-		switch (i) 
+		Debug.Log ("i = " + i);
+
+		Color c1 = new Color32 (63,85,173, 0);
+		Color c2 = new Color32 (63,173,110, 0);
+		Color c3 = new Color32 (63,173,63, 0);
+		Color c4 = new Color32 (191,188,28, 0);
+		Color c5 = new Color32 (200,54,45, 0);
+		Color c6 = new Color32 (231,95,116, 0);
+		Color c7 = new Color32 (170,44,190, 0);
+
+		switch (i)
 		{
 		case 1:
-			Camera.current.backgroundColor = Color(63,85,173);
+			cam.backgroundColor = c1;
 			break;
 		case 2:
-			Camera.current.backgroundColor = Color(63,173,110);
+			cam.backgroundColor = c2;
 			break;
 		case 3:
-			Camera.current.backgroundColor = Color(63,173,63);
+			cam.backgroundColor = c3;
 			break;
 		case 4:
-			Camera.current.backgroundColor = Color(191,188,28);
+			cam.backgroundColor = c4;
 			break;
 		case 5:
-			Camera.current.backgroundColor = Color(200,54,45);
+			cam.backgroundColor = c5;
 			break;
 		case 6:
-			GetComponent<UnityEngine.UI.Image> ().color = Color(231,95,116);
+			cam.backgroundColor = c6;
 			break;
 		case 7:
-			GetComponent<UnityEngine.UI.Image> ().color = Color(170,44,190);
+			cam.backgroundColor = c7;
 			break;
 		}
 	}
