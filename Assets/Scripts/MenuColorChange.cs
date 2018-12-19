@@ -27,6 +27,7 @@ public class MenuColorChange : MonoBehaviour
 			break;
 		case 2:
 			cam.backgroundColor = c2;
+			//Canvas.FindObjectOfType<Button>()>().image = Color.black;
 			break;
 		case 3:
 			cam.backgroundColor = c3;
