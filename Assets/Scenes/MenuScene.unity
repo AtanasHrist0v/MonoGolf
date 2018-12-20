@@ -613,7 +613,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.24705882, g: 0.33361515, b: 0.6784314, a: 0}
+  m_BackGroundColor: {r: 0.24705882, g: 0.33333334, b: 0.6784314, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.023584902, g: 0.45174193, b: 1, a: 1}
+  m_Color: {r: 0.023529414, g: 0.45098042, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
